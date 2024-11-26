@@ -12,19 +12,16 @@ export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
-
   return json({ apiKey: process.env.SHOPIFY_API_KEY || "" });
 };
 
-export default function App() {
+const App: React.FC = () => {
   const { apiKey } = useLoaderData<typeof loader>();
 
   return (
     <AppProvider isEmbeddedApp apiKey={apiKey}>
       <NavMenu>
-        <Link to="/app" rel="home">
-          Home
-        </Link>
+        <Link to="/app" rel="home">Home</Link>
         <Link to="/app/campaigns">Campaings</Link>
         <Link to="/app/automations">Automation</Link>
         <Link to="/app/billings">Billing</Link>
@@ -32,7 +29,7 @@ export default function App() {
       <Outlet />
     </AppProvider>
   );
-}
+};
 
 // Shopify needs Remix to catch some thrown responses, so that their headers are included in the response.
 export function ErrorBoundary() {

@@ -1,9 +1,19 @@
+import { Layout, Page } from "@shopify/polaris";
 import React from "react";
+import SubscriptionBtn from "./app.subscriptionBtn";
+import CancelBtn from "./app.cancelBtn";
 
-type props = {};
+type Props = {};
 
-const BillingsPage = (props: Props) => {
-    return <div>BillingsPage</div>
-}
+const Billing = (props: Props) => {
+  return (
+    <Page>
+      <Layout.Section>
+        <SubscriptionBtn />
+        <CancelBtn />
+      </Layout.Section>
+    </Page>
+  );
+};
 
-export default BillingsPage;
+export default Billing;
